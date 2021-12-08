@@ -1,0 +1,45 @@
+﻿@model NLayerApp.WEB.Models.ProjectViewModel
+
+@{
+    ViewBag.Title = @Resources.Resource.Details;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Resources.Resource.Details</h2>
+
+<div>
+    <h4>@Resources.Resource.Projects</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_projects)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_projects)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_end_projects)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_end_projects)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_start_projects)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_start_projects)
+        </dd>
+
+ 
+        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(@Resources.Resource.Edit, "Edit", new { id = Model.ProjectId }) |
+    @Html.ActionLink(@Resources.Resource.Back, "Index")
+</p>

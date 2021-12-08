@@ -1,0 +1,154 @@
+﻿@model NLayerApp.WEB.Models.OrderViewModel
+@{
+    ViewBag.Title = @Resources.Resource.Edit;
+}
+
+<h2>@Resources.Resource.Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>@Resources.Resource.Employees</legend>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name_customer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name_customer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name_customer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Surname_customer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Surname_customer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Surname_customer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateOfCompletion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="date" class="form-control" id="date" name="DateOfCompletion" placeholder="Дата" required>
+                    @Html.ValidationMessageFor(model => model.DateOfCompletion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Resources.Resource.ChoseProduct
+            <div class="form-group">
+                @*<div class="row">
+            <div class="col-md-6">*@
+                <hr />
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            @Resources.Resource.ProductsId
+                        </th>
+                        <th>
+                            @Resources.Resource.Title
+                        </th>
+                        <th>
+                            @Resources.Resource.Manufacturer
+                        </th>
+                        <th>
+                            @Resources.Resource.Price
+                        </th>
+                        <th>
+                            @Resources.Resource.Category
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in ViewBag.StockId)
+                    {
+                        <tr>
+                            <td>
+                                @item.ProductsId
+                            </td>
+                            <td>
+                                @item.Title
+                            </td>
+                            <td>
+                                @item.Manufacturer
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                            <td>
+                                @item.Category.NameCategory
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="checkbox" class="form-check-input position-static" name="selectedProducts" value="@item.ProductsId" /> <br />
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            @*<div class="col-md-6">
+            <hr />
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>
+                        № Продукта
+                    </th>
+                    <th>
+                        Название прродукта
+                    </th>
+                    <th>
+                        Производитель
+                    </th>
+                    <th>
+                        Цена
+                    </th>
+                    <th>
+                        Категория
+                    </th>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrdersId)
+                    </td>
+                </tr>
+            </table>
+        </div>*@
+            @*</div>
+        </div>*@
+</fieldset>
+}
+<div>
+    @Html.ActionLink(@Resources.Resource.Back, "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

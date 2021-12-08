@@ -1,0 +1,90 @@
+﻿@model IEnumerable<NLayerApp.WEB.Models.OrderViewModel>
+
+<h2>Заказы</h2>
+
+@if (User.IsInRole("admin"))
+{
+    <button typeof="button" class="btn btn-default btn-sm">
+        @Html.ActionLink(@Resources.Resource.Add, "Create")
+    </button>
+}
+<p> </p>
+<table class="table table-bordered table-hover tablesorter" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrdersId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name_customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname_customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfCompletion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrdersId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name_customer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname_customer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfCompletion)
+                </td>
+
+                <td>
+
+
+                    <div class="dropdown">
+                        @*<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">*@
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Действие
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink(@Resources.Resource.Edit, "Edit", new { id = item.OrdersId })
+                            </li>
+                            <li>
+                                @Html.ActionLink(@Resources.Resource.Details, "Details", new { id = item.OrdersId })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Cancel", "cancel", new { id = item.OrdersId })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Complete", "Complete", new { id = item.OrdersId })
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

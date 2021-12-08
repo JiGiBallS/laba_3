@@ -1,0 +1,149 @@
+﻿@model IEnumerable<NLayerApp.WEB.Models.OrderHistoryViewModel>
+
+
+<h2>Заказы</h2>
+
+@if (User.IsInRole("admin"))
+{
+    <button typeof="button" class="btn btn-default btn-sm">
+        @Html.ActionLink(@Resources.Resource.Add, "Create")
+    </button>
+}
+<p> </p>
+<table class="table table-bordered table-hover tablesorter" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrdersId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name_customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname_customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfCompletion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Status == 1)
+            { 
+                <tr class="success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrdersId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name_customer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname_customer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AllOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfCompletion)
+                    </td>
+
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                Действие
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">                            
+                                <li>
+                                    @*<button class="btn btn-default btn-sm">*@
+                                    @Html.ActionLink(@Resources.Resource.Details, "Details", new { id = item.OrdersId })
+                                    @*</button>*@
+                                </li>
+                                <li>
+                                    @*<button class="btn btn-default btn-sm">*@
+                                    @Html.ActionLink(@Resources.Resource.Delete, "Delete", new { id = item.OrdersId })
+                                    @*</button>*@
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+        }
+                            else
+            {
+                <tr class="danger">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrdersId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name_customer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname_customer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AllOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfCompletion)
+                    </td>
+
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                Действие
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @*<button class="btn btn-default btn-sm">*@
+                                    @Html.ActionLink(@Resources.Resource.Details, "Details", new { id = item.OrdersId })
+                                    @*</button>*@
+                                </li>
+                                <li>
+                                    @*<button class="btn btn-default btn-sm">*@
+                                    @Html.ActionLink(@Resources.Resource.Delete, "Delete", new { id = item.OrdersId })
+                                    @*</button>*@
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

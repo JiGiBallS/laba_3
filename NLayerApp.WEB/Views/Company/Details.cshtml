@@ -1,0 +1,74 @@
+﻿@model NLayerApp.WEB.Models.OrderViewModel
+    
+    Детали заказа №@ViewBag.OrdersId
+
+
+<h2>@Resources.Resource.Details</h2>
+
+<div>
+    <h4>@Resources.Resource.Employees</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Номер заказа
+        </dt>
+        <dd>
+            @ViewBag.OrdersId
+        </dd>
+        <dt>
+            Имя заказчика
+        </dt>
+        <dd>
+            @ViewBag.Name_customer
+        </dd>
+        <dt>
+            Фамилия заказчика
+        </dt>
+        <dd>
+            @ViewBag.Surname_customer
+        </dd>
+        <dt>
+            Стоимость
+        </dt>
+        <dd>
+            @ViewBag.Amount
+        </dd>
+        <dt>
+            Дата выполнения заказа
+        </dt>
+        <dd>
+            @ViewBag.DateOfCompletion
+        </dd>
+        <dt>
+            Email
+        </dt>
+        <dd>
+            @ViewBag.Email
+        </dd>
+        <dt>
+            Мобильный номер
+        </dt>
+        <dd>
+            @ViewBag.MNumber
+        </dd>
+        <dt>
+            Заказ
+        </dt>
+        <dd>
+            @ViewBag.AllOrder
+        </dd>
+        <dt>
+            Дата поступления заказ
+        </dt>
+        <dd>
+            @ViewBag.Date_Order
+        </dd>
+    </dl>
+</div>
+    @*@foreach (var c in Model.Projects)
+    {
+        <li>@c.Name_projects</li>
+    }*@
+<p>
+    @Html.ActionLink(@Resources.Resource.Back, "Index")
+</p>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<NLayerApp.WEB.Models.EmployeeViewModel>
+
+<h2>@Resources.Resource.Employees</h2>
+    <button typeof="button" class="btn btn-default btn-sm">
+        @Html.ActionLink(@Resources.Resource.Add, "Create")
+    </button>
+<p> </p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Education.Name_place_of_study)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_employees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname_employees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_start_job)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_end_education)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender.Name_Gender)
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Education.Name_place_of_study)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_employees)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname_employees)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_start_job)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_end_education)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender.Name_Gender)
+            </td>
+            <td>
+                <div class="form-group">
+                        <button class="btn btn-default btn-sm" onclick="window.location.href='/Company/Edit/'+item.EmployeesId">
+                            @Html.ActionLink(@Resources.Resource.Edit, "Edit", new { id = item.EmployeesId })
+                        </button>
+                        <button class="btn btn-default btn-sm">
+                            @Html.ActionLink(@Resources.Resource.Details, "Details", new { id = item.EmployeesId })
+                        </button>
+                        <button class="btn btn-default btn-sm">
+                            @Html.ActionLink(@Resources.Resource.Delete, "Delete", new { id = item.EmployeesId })
+                        </button>
+                       
+                </div>
+            </td>
+        </tr>
+    }
+</table>

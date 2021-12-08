@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NLayerApp.WEB.Models.ProjectViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Resource.ProjectAdd, "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_projects)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_end_projects)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_start_projects)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_projects)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_end_projects)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_start_projects)
+            </td>
+            <td>
+                @Html.ActionLink(@Resources.Resource.Edit, "Edit", new { id = item.ProjectId }) |
+                @Html.ActionLink(@Resources.Resource.Details, "Details", new { id = item.ProjectId }) |
+                @Html.ActionLink(@Resources.Resource.Delete, "Delete", new { id = item.ProjectId })
+            </td>
+        </tr>
+    }
+
+</table>

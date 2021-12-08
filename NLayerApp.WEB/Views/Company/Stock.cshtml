@@ -1,0 +1,73 @@
+﻿@model IEnumerable<NLayerApp.WEB.Models.StockViewModel>
+
+<h2>Склад</h2>
+
+        <button typeof="button" class="btn btn-default btn-sm">
+            @Html.ActionLink("Заказать товар", "CreateOrderProducts")
+        </button>
+<p> </p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductsId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.NameCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_of_delivery)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductsId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.NameCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_of_delivery)
+        </td>
+        <td>
+            <div class="form-group">
+                <button class="btn btn-default btn-sm" onclick="window.location.href='/Company/Edit/'+item.EmployeesId">
+                    @Html.ActionLink(@Resources.Resource.Edit, "EditProducts", new { id = item.ProductsId })
+                </button>
+                @*<button class="btn btn-default btn-sm">
+                    @Html.ActionLink(@Resources.Resource.Details, "Details", new { id = item.ProductsId })
+                </button>
+                <button class="btn btn-default btn-sm">
+                    @Html.ActionLink(@Resources.Resource.Delete, "Delete", new { id = item.ProductsId })
+                </button>*@
+            </div>
+        </td>
+    </tr>
+    }
+</table>
